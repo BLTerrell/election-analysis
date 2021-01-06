@@ -23,6 +23,11 @@ total_votes = 0
 candidate_options = []
 candidate_votes = {}
 
+# initialize the winning candidate, the winning vote count, and the winning percentage
+winning_candidate = ''
+winning_count = 0
+winning_percentage = 0
+
 # Open the election results and read the file; use "with" so that it closes automatically
 with open(file_to_load) as election_data:
 
@@ -51,8 +56,25 @@ with open(file_to_load) as election_data:
 for cand in candidate_votes:
     votes = candidate_votes[cand]
     vote_percentage = float(votes)/total_votes * 100
-    print(f'Candidate {cand} received {vote_percentage:.1f} % of the vote.')
 
+    #print(f'Candidate {cand} received {vote_percentage:.1f} % of the vote.')
+
+    if (votes > winning_count) and (vote_percentage > winning_percentage):
+        winning_count = votes
+        winning_percentage = vote_percentage
+        winning_candidate = cand
+
+    print(f"{cand}: {vote_percentage:.1f}% ({votes:,})\n")
+
+# Print winning candidate
+winin_candidate_summary = (
+    f"-------------------------\n"
+    f"Winner: {winning_candidate}\n"
+    f"Winning Vote Count: {winning_count:,}\n"
+    f"Winning Percentage: {winning_percentage:.1f}\n"
+    f"-------------------------\n")
+
+print(winin_candidate_summary)
 
 # Print total votes, candidate options
 # print(total_votes)
