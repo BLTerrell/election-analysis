@@ -48,11 +48,16 @@ with open(file_to_load) as election_data:
         # Begin counting that candidates votes
         candidate_votes[candidate_name] += 1
 
+for cand in candidate_votes:
+    votes = candidate_votes[cand]
+    vote_percentage = float(votes)/total_votes * 100
+    print(f'Candidate {cand} received {vote_percentage:.1f} % of the vote.')
+
 
 # Print total votes, candidate options
 # print(total_votes)
 # print(candidate_options)
-print(candidate_votes)
+# print(candidate_votes)
 
 '''
 # Open file using "with" so that it automatically closes
