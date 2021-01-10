@@ -57,35 +57,50 @@ for cand in candidate_votes:
     votes = candidate_votes[cand]
     vote_percentage = float(votes)/total_votes * 100
 
-    #print(f'Candidate {cand} received {vote_percentage:.1f} % of the vote.')
+    # print(f'Candidate {cand} received {vote_percentage:.1f} % of the vote.')
 
     if (votes > winning_count) and (vote_percentage > winning_percentage):
         winning_count = votes
         winning_percentage = vote_percentage
         winning_candidate = cand
 
-    print(f"{cand}: {vote_percentage:.1f}% ({votes:,})\n")
+    # print(f"{cand}: {vote_percentage:.1f}% ({votes:,})\n")
 
 # Print winning candidate
-winin_candidate_summary = (
+winning_candidate_summary = (
     f"-------------------------\n"
     f"Winner: {winning_candidate}\n"
     f"Winning Vote Count: {winning_count:,}\n"
     f"Winning Percentage: {winning_percentage:.1f}\n"
     f"-------------------------\n")
 
-print(winin_candidate_summary)
+# print(winning_candidate_summary)
 
 # Print total votes, candidate options
 # print(total_votes)
 # print(candidate_options)
 # print(candidate_votes)
 
-'''
 # Open file using "with" so that it automatically closes
-with open(file_to_save) as outfile:
-    
-    # Code to read and analyze data here
-    outfile.write("Counties in the Election\n-------------------------\n")
-   outfile.write("Arapahoe\nDenver\nJefferson")
-'''
+with open(file_to_save, 'w') as txt_file:
+
+    election_results = (
+        f"\nElection Results\n"
+        f"-------------------------\n"
+        f"Total Votes: {total_votes:,}\n"
+        f"-------------------------\n")
+
+    print(election_results, end="")
+
+    txt_file.write(election_results)
+
+    for cand in candidate_votes:
+        votes = candidate_votes[cand]
+        vote_percentage = float(votes)/total_votes * 100
+
+        candidate_results = (f'{cand}: {vote_percentage:.1f}% {votes:,}\n')
+        print(candidate_results)
+
+        txt_file.write(candidate_results)
+    print(winning_candidate_summary)
+    txt_file.write(winning_candidate_summary)
