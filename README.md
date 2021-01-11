@@ -39,7 +39,7 @@ An image of the election results text file that was written for the election com
 
 I think the greatest use of this script would be to modify it to work for broader elections. This would be done by adding a position column to the data we collect. We would initialize a `position_list = []` and loop to grab different position titles:
 
-'''
+```
   
   for row in reader:
 
@@ -52,11 +52,11 @@ I think the greatest use of this script would be to modify it to work for broade
 
             # Add the position title to the position list.
             position_list.append(position_title)
-'''
+```
 
 Another simpler way to modify the code would be to calculate the % of eligible voters that voted in each county. All you would need to know is the eligible voter population by county and adjust the code as follows:
 
-'''
+```
 
         for county_name in county_votes:
 
@@ -70,4 +70,4 @@ Another simpler way to modify the code would be to calculate the % of eligible v
         county_results = (f"{county_name}: {c_vote_percent:.1f}% of eligible voter population ({c_votes:,})\n")
         
         print(county_results)
-'''
+```
