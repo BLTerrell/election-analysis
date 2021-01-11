@@ -30,6 +30,7 @@ From analyzing the election data we determined:
 - Diane DeGette was the popular vote winner with 73.8% of the vote (272,892 total votes)
 
 An image of the election results text file that was written for the election commission follows:
+
 ![Election Summary](Resources/election_results.png)
 
 ## Election Audit Summary
